@@ -1,6 +1,7 @@
 go 1.20
 
 use (
-    ./maelstrom-echo
-    ./maelstrom-unique-ids
+	./maelstrom-broadcast
+	./maelstrom-echo
+	./maelstrom-unique-ids
 )

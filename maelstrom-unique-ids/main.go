@@ -2,9 +2,9 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 
-	"github.com/google/uuid"
 	maelstrom "github.com/jepsen-io/maelstrom/demo/go"
 )
 
@@ -18,7 +18,8 @@ func main() {
 			return err
 		}
 
-		body["id"] = uuid.New().String()
+		// The node id + the msg_id will always be unique
+		body["id"] = fmt.Sprintf("%s-%v", n.ID(), body["msg_id"])
 		body["type"] = "generate_ok"
 
 		return n.Reply(msg, body)
